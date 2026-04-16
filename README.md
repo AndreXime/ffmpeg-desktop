@@ -1,49 +1,67 @@
-# README
+# ffmpeg-desktop
 
-## About
+App **Wails** (Go + React/TypeScript) para converter **imagem**, **vídeo** ou **áudio** com o `ffmpeg`. A saída pode ficar no mesmo diretório da entrada, com nome previsível e opção de compressão.
 
-App Wails (Go + React/TS) para converter **imagem**, **vídeo** ou **áudio** usando `ffmpeg`.
+## Captura de tela
 
-Por padrão, a saída é salva **no mesmo diretório da entrada**, com o **mesmo nome base** e a extensão do formato escolhido.
+![Interface do ffmpeg-ui](showcase.png)
 
-## Requirements
+## Pré-requisitos
 
-- `ffmpeg` instalado e disponível no PATH
-- Linux (GTK/WebKit):
+- **GNU Make** (`make`)
+- **Go**, **Node.js** e **npm**
+- **Wails** v2 instalado
+- **`ffmpeg`** no `PATH`
+- Linux (GTK/WebKit), por exemplo:
   - Ubuntu 25.10+: `libwebkit2gtk-4.1-dev`
-  - Ubuntu mais antigas: `libwebkit2gtk-4.0-dev` (quando disponível)
-  - `libgtk-3-dev`
-  - `pkg-config`
+  - Ubuntu mais antigas: `libwebkit2gtk-4.0-dev` (quando existir no repositório)
+  - `libgtk-3-dev`, `pkg-config`
 
-## Live Development
+## Uso com Make
 
-To run in live development mode:
+Na **raiz do repositório**, use os alvos do `Makefile`:
 
-```bash
-cd frontend
-npm install
-cd ..
-wails dev
-```
+| Comando | O que faz |
+|--------|-----------|
+| `make install` | Instala dependências do frontend (`npm install` em `frontend/`) |
+| `make generate` | Regenera bindings Wails (`frontend/wailsjs`) após mudar a API Go |
+| `make dev` | Modo desenvolvimento (app desktop + hot reload) |
+| `make dev-webkit41` | Igual ao `dev`, com WebKitGTK **4.1** (ex.: Ubuntu 25.10+) |
+| `make build` | Build de produção (binário em `build/bin/ffmpeg-ui`) |
+| `make build-webkit41` | Build de produção com tag `webkit2_41` |
+| `make run` | Executa o binário gerado em `build/bin/ffmpeg-ui` |
+| `make frontend-dev` | Só o Vite (frontend no browser, sem janela Wails) |
+| `make frontend-build` | Só o build estático do frontend |
+| `make clean` | Remove `frontend/dist` e `build/bin` |
 
-Em distros com WebKitGTK 4.1 (ex.: Ubuntu 25.10), use:
-
-```bash
-wails dev -tags webkit2_41
-```
-
-## Building
-
-To build a redistributable, production mode package:
+### Desenvolvimento
 
 ```bash
-wails build
+make install
+make dev
 ```
 
-Em distros com WebKitGTK 4.1 (ex.: Ubuntu 25.10), use:
+Em distros com WebKitGTK 4.1:
 
 ```bash
-wails build -tags webkit2_41
+make install
+make dev-webkit41
 ```
 
-Se aparecer erro de `webkit2gtk-4.0` no `pkg-config`, instale o pacote WebKit correto para a sua versão do Ubuntu (4.0 vs 4.1) e/ou use `-tags webkit2_41`.
+### Build de produção
+
+```bash
+make install
+make build
+make run
+```
+
+Com WebKit 4.1:
+
+```bash
+make install
+make build-webkit41
+make run
+```
+
+Se o `pkg-config` reclamar de `webkit2gtk-4.0`, instale o pacote WebKit certo para a sua distro e/ou use os alvos `*-webkit41`.

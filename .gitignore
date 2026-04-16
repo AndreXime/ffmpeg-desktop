@@ -1,0 +1,19 @@
+# Binários gerados por `wails build` (Linux/macOS/Windows) — não versionar
+build/bin/
+
+# Dependências e build do frontend (Vite)
+node_modules/
+frontend/node_modules/
+frontend/dist/
+# Hash gerado pelo Wails para invalidar `npm install` — derivado de package.json
+frontend/package.json.md5
+
+# Cache / local
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+
+# Recurso Windows gerado às vezes na raiz do pacote Go
+*.syso

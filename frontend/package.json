@@ -1,0 +1,28 @@
+{
+	"name": "frontend",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"lint": "biome lint .",
+		"format": "biome check --write --no-errors-on-unmatched .",
+		"check": "biome check ."
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.12",
+		"@tailwindcss/vite": "^4.2.2",
+		"@types/react": "^18.0.17",
+		"@types/react-dom": "^18.0.6",
+		"@vitejs/plugin-react": "^6.0.1",
+		"tailwindcss": "^4.2.2",
+		"typescript": "^4.6.4",
+		"vite": "^8.0.8"
+	}
+}

@@ -1,10 +1,10 @@
 # ffmpeg-desktop
 
-App **Wails** (Go + React/TypeScript) para converter **imagem**, **vídeo** ou **áudio** com o `ffmpeg`. A saída pode ficar no mesmo diretório da entrada, com nome previsível e opção de compressão.
+App **Wails** (Go + React/TypeScript) para converter **imagem**, **vídeo** ou **áudio** com o `ffmpeg`.
 
 ## Captura de tela
 
-![Interface do ffmpeg-ui](showcase.png)
+![Interface](showcase.png)
 
 ## Pré-requisitos
 
@@ -12,14 +12,11 @@ App **Wails** (Go + React/TypeScript) para converter **imagem**, **vídeo** ou *
 - **Go**, **Node.js** e **npm**
 - **Wails** v2 instalado
 - **`ffmpeg`** no `PATH`
-- Linux (GTK/WebKit), por exemplo:
-  - Ubuntu 25.10+: `libwebkit2gtk-4.1-dev`
-  - Ubuntu mais antigas: `libwebkit2gtk-4.0-dev` (quando existir no repositório)
+- Linux:
+  - `libwebkit2gtk-4.1-dev` ou `libwebkit2gtk-4.0-dev`
   - `libgtk-3-dev`, `pkg-config`
 
-## Uso com Make
-
-Na **raiz do repositório**, use os alvos do `Makefile`:
+## Make targets
 
 | Comando | O que faz |
 |--------|-----------|
